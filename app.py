@@ -1,5 +1,6 @@
 from random import choice
 
+import emoji
 from faker import Faker
 from flask import Flask
 
@@ -30,6 +31,13 @@ class RandomPhoto:
         pixelw = choice(pixels)
         pixell = choice(pixels)
         return f"http://lorempixel.com/{pixelw}/{pixell}/animals/",
+
+class RandomEmoji:
+    @property
+    def value(self):
+        emojis = list(emoji.EMOJI_ALIAS_UNICODE_ENGLISH.values())
+        number = choice([1,3,5,7,51])
+        return "".join(sample(emojis, number))
 
 @app.route("/")
 def homepage():
