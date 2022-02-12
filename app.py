@@ -23,6 +23,14 @@ class RandomText:
             ]
         )
 
+class RandomPhoto:
+    @property
+    def value(self):
+        pixels = [100, 150, 200, 250, 300, 350, 400]
+        pixelw = choice(pixels)
+        pixell = choice(pixels)
+        return f"http://lorempixel.com/{pixelw}/{pixell}/animals/",
+
 @app.route("/")
 def homepage():
     return "Welcome to Randomizer!"
