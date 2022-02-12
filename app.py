@@ -48,6 +48,19 @@ class IPMsg:
     def value(self):
         return f"Hello person! Your ip address is {self.ip_address}."
 
+class RandomResponse:
+    def __init__(self):
+        self.number = RandomNumber()
+        self.text = RandomText()
+        self.photo = RandomPhoto()
+        self.emoji = RandomEmoji()
+        self.randoms = [self.number, self.text, self.photo, self.emoji]
+ 
+    def get_random_thing(self):
+        return choice(self.randoms).value        
+    
+response_generator = RandomResponse()
+
 @app.route("/")
 def homepage():
     return "Welcome to Randomizer!"
