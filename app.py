@@ -5,6 +5,7 @@ import emoji
 from faker import Faker
 from flask import Flask
 from flask import request
+from flaks import render_template
 from flask import jsonify
 
 app = Flask(__name__)
@@ -74,7 +75,7 @@ def get_random_thing():
 
 @app.route("/")
 def homepage():
-    return "Welcome to Randomizer!"
+    return render_template("homepage.html")
 
 
 if __name__ == '__main__':
