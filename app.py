@@ -39,6 +39,14 @@ class RandomEmoji:
         number = choice([1,3,5,7,51])
         return "".join(sample(emojis, number))
 
+class IPMsg:
+    def __init__(self, ip_address):
+        self.ip_address = ip_address
+
+    @property
+    def value(self):
+        return f"Hello person! Your ip address is {self.ip_address}."
+
 @app.route("/")
 def homepage():
     return "Welcome to Randomizer!"
