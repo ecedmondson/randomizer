@@ -4,6 +4,8 @@ from random import sample
 import emoji
 from faker import Faker
 from flask import Flask
+from flask import request
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -60,6 +62,15 @@ class RandomResponse:
         return choice(self.randoms).value        
     
 response_generator = RandomResponse()
+
+@app.route("/api/random", methods=["POST"])
+def get_random_thing():
+    response_generator.randoms.append(IPMsg(request.remote_addr))
+    random_value = response_generator.get_random_thing()
+    response_generator.randoms.pop(len(response_generator.randoms) - 1)
+    if "lorempixel" in str(random_value):
+        return jsonify({"randomphoto": random_value})
+    return jsonify({"random": random_value})
 
 @app.route("/")
 def homepage():
