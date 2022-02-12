@@ -1,6 +1,13 @@
+from random import choice
+
 from flask import Flask
 
 app = Flask(__name__)
+
+class RandomNumber:
+    @property
+    def value(self):
+        return choice(range(0, 100000))
 
 @app.route("/")
 def homepage():
