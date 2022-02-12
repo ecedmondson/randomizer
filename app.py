@@ -1,4 +1,5 @@
 from random import choice
+from random import sample
 
 import emoji
 from faker import Faker
